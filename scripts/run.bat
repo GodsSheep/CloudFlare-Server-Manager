@@ -1,0 +1,3 @@
+@echo off
+echo Starting NebulaForge...
+python main.pyw

@@ -1,0 +1,39 @@
+from enum import Enum
+
+
+class ProjectState(Enum):
+    NEW = 'NEW'
+    IMPORTING = 'IMPORTING'
+    READY = 'READY'
+    STARTING = 'STARTING'
+    ONLINE = 'ONLINE'
+    DEGRADED = 'DEGRADED'
+    STOPPING = 'STOPPING'
+    STOPPED = 'STOPPED'
+    CRASHED = 'CRASHED'
+    FAILED = 'FAILED'
+
+
+class DesiredState(Enum):
+    RUNNING = 'RUNNING'
+    STOPPED = 'STOPPED'
+
+
+class TunnelState(Enum):
+    DISABLED = 'DISABLED'
+    STARTING = 'STARTING'
+    CONNECTED = 'CONNECTED'
+    DISCONNECTED = 'DISCONNECTED'
+    RECONNECTING = 'RECONNECTING'
+    FAILED = 'FAILED'
+
+
+class ProcessState(Enum):
+    CREATED = 'CREATED'
+    STARTING = 'STARTING'
+    ONLINE = 'ONLINE'
+    DEGRADED = 'DEGRADED'
+    STOPPING = 'STOPPING'
+    STOPPED = 'STOPPED'
+    CRASHED = 'CRASHED'
+    FAILED = 'FAILED'
