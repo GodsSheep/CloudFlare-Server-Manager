@@ -1,6 +1,5 @@
 import sys
 import os
-from pathlib import Path
 
 
 def check_dependencies():
@@ -70,7 +69,7 @@ def main():
     
     app = QApplication(sys.argv)
     state = AppState()
-    state.initialize(str(Path(__file__).resolve().parent / 'data'))
+    state.initialize(str(os.path.dirname(os.path.abspath(__file__)) / 'data'))
     window = MainWindow()
     window.show()
     sys.exit(app.exec())
