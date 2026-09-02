@@ -2,102 +2,76 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NebulaForge X300 - Web Control Center</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#1e1e1e">
+    <title>NebulaForge X300</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="app">
-        <nav class="sidebar">
+        <!-- Desktop Sidebar -->
+        <nav class="sidebar desktop-only">
             <div class="logo">NebulaForge</div>
             <ul class="nav-menu">
-                <li class="nav-item active" data-page="dashboard">
-                    <span class="nav-icon">⌂</span>
-                    <span class="nav-label">Dashboard</span>
-                </li>
-                <li class="nav-item" data-page="projects">
-                    <span class="nav-icon">▣</span>
-                    <span class="nav-label">Live Projects</span>
-                </li>
-                <li class="nav-item" data-page="files">
-                    <span class="nav-icon">▤</span>
-                    <span class="nav-label">Files</span>
-                </li>
-                <li class="nav-item" data-page="tunnels">
-                    <span class="nav-icon">☁</span>
-                    <span class="nav-label">Tunnels</span>
-                </li>
-                <li class="nav-item" data-page="viewer">
-                    <span class="nav-icon">◉</span>
-                    <span class="nav-label">Website Viewer</span>
-                </li>
-                <li class="nav-item" data-page="settings">
-                    <span class="nav-icon">⚙</span>
-                    <span class="nav-label">Settings</span>
-                </li>
+                <li class="nav-item active" data-page="dashboard"><span class="nav-icon">⌂</span><span class="nav-label">Dashboard</span></li>
+                <li class="nav-item" data-page="projects"><span class="nav-icon">▣</span><span class="nav-label">Projects</span></li>
+                <li class="nav-item" data-page="files"><span class="nav-icon">▤</span><span class="nav-label">Files</span></li>
+                <li class="nav-item" data-page="tunnels"><span class="nav-icon">☁</span><span class="nav-label">Tunnels</span></li>
+                <li class="nav-item" data-page="viewer"><span class="nav-icon">◉</span><span class="nav-label">Viewer</span></li>
+                <li class="nav-item" data-page="settings"><span class="nav-icon">⚙</span><span class="nav-label">Settings</span></li>
             </ul>
-            <div class="status-indicator">
-                <span class="status-dot"></span>
-                <span class="status-text">SYSTEM ONLINE</span>
-            </div>
+            <div class="status-indicator"><span class="status-dot"></span><span class="status-text">ONLINE</span></div>
+        </nav>
+
+        <!-- Mobile Bottom Nav -->
+        <nav class="mobile-nav mobile-only">
+            <div class="mobile-nav-item active" data-page="dashboard"><span class="nav-icon">⌂</span><span class="nav-label">Home</span></div>
+            <div class="mobile-nav-item" data-page="projects"><span class="nav-icon">▣</span><span class="nav-label">Projects</span></div>
+            <div class="mobile-nav-item" data-page="files"><span class="nav-icon">▤</span><span class="nav-label">Files</span></div>
+            <div class="mobile-nav-item" data-page="tunnels"><span class="nav-icon">☁</span><span class="nav-label">Tunnels</span></div>
+            <div class="mobile-nav-item" data-page="viewer"><span class="nav-icon">◉</span><span class="nav-label">Viewer</span></div>
         </nav>
 
         <main class="main-content">
-            <!-- Dashboard Page -->
+            <!-- Dashboard -->
             <div class="page active" id="page-dashboard">
                 <h1 class="page-title">Control Center</h1>
                 <div class="stats-grid">
-                    <div class="stat-card">
-                        <div class="stat-label">Servers</div>
-                        <div class="stat-value" id="stat-servers">0</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-label">Projects</div>
-                        <div class="stat-value" id="stat-projects">0</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-label">Tunnels</div>
-                        <div class="stat-value" id="stat-tunnels">0</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-label">Processes</div>
-                        <div class="stat-value" id="stat-processes">0</div>
-                    </div>
+                    <div class="stat-card"><div class="stat-label">Servers</div><div class="stat-value" id="stat-servers">0</div></div>
+                    <div class="stat-card"><div class="stat-label">Projects</div><div class="stat-value" id="stat-projects">0</div></div>
+                    <div class="stat-card"><div class="stat-label">Tunnels</div><div class="stat-value" id="stat-tunnels">0</div></div>
+                    <div class="stat-card"><div class="stat-label">Processes</div><div class="stat-value" id="stat-processes">0</div></div>
                 </div>
-
                 <div class="section">
                     <h2 class="section-title">Quick Actions</h2>
                     <div class="action-buttons">
-                        <button class="btn btn-primary" onclick="app.createProject()">+ New Project</button>
+                        <button class="btn btn-primary" onclick="app.createProject()">+ Project</button>
                         <button class="btn btn-primary" onclick="app.importProject()">Import</button>
                         <button class="btn btn-primary" onclick="app.startTunnel()">+ Tunnel</button>
                     </div>
                 </div>
-
                 <div class="section">
                     <h2 class="section-title">Active Projects</h2>
-                    <div id="projects-list" class="list-container">
-                        <p class="empty-state">No projects yet. Create your first project to get started.</p>
-                    </div>
+                    <div id="projects-list" class="list-container"><p class="empty-state">No projects yet.</p></div>
                 </div>
             </div>
 
-            <!-- Projects Page -->
+            <!-- Projects -->
             <div class="page" id="page-projects">
                 <h1 class="page-title">Live Projects</h1>
                 <div class="toolbar">
-                    <button class="btn btn-primary" onclick="app.createProject()">+ New Project</button>
+                    <button class="btn btn-primary" onclick="app.createProject()">+ New</button>
                     <button class="btn" onclick="app.importProject()">Import</button>
                     <button class="btn" onclick="app.refreshProjects()">Refresh</button>
                 </div>
-                <div id="all-projects" class="list-container">
-                    <p class="empty-state">No projects found.</p>
-                </div>
+                <div id="all-projects" class="list-container"><p class="empty-state">No projects found.</p></div>
             </div>
 
-            <!-- Files Page -->
+            <!-- Files -->
             <div class="page" id="page-files">
-                <h1 class="page-title">File Manager</h1>
+                <h1 class="page-title">Files</h1>
                 <div class="toolbar">
                     <button class="btn btn-primary" onclick="app.uploadFile()">Upload</button>
                     <button class="btn" onclick="app.createFolder()">New Folder</button>
@@ -105,94 +79,54 @@
                 </div>
                 <div class="file-browser">
                     <table class="file-table">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Size</th>
-                                <th>Modified</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody id="file-list">
-                            <tr>
-                                <td colspan="4" class="empty-state">No files to display</td>
-                            </tr>
-                        </tbody>
+                        <thead><tr><th>Name</th><th>Size</th><th>Modified</th></tr></thead>
+                        <tbody id="file-list"><tr><td colspan="3" class="empty-state">No files</td></tr></tbody>
                     </table>
                 </div>
             </div>
 
-            <!-- Tunnels Page -->
+            <!-- Tunnels -->
             <div class="page" id="page-tunnels">
-                <h1 class="page-title">Tunnel Manager</h1>
+                <h1 class="page-title">Tunnels</h1>
                 <div class="toolbar">
                     <select id="tunnel-provider" class="select-input">
                         <option value="cloudflare">Cloudflare</option>
                         <option value="ngrok">ngrok</option>
                         <option value="localtunnel">LocalTunnel</option>
                     </select>
-                    <button class="btn btn-primary" onclick="app.startTunnel()">Start Tunnel</button>
+                    <button class="btn btn-primary" onclick="app.startTunnel()">Start</button>
                     <button class="btn" onclick="app.refreshTunnels()">Refresh</button>
                 </div>
-                <div id="tunnels-list" class="list-container">
-                    <p class="empty-state">No active tunnels.</p>
-                </div>
+                <div id="tunnels-list" class="list-container"><p class="empty-state">No active tunnels.</p></div>
             </div>
 
-            <!-- Website Viewer Page -->
+            <!-- Viewer -->
             <div class="page" id="page-viewer">
                 <h1 class="page-title">Website Viewer</h1>
                 <div class="viewer-toolbar">
-                    <input type="text" id="viewer-url" class="url-input" placeholder="Enter tunnel URL or localhost address..." value="">
+                    <input type="text" id="viewer-url" class="url-input" placeholder="https://your-tunnel.trycloudflare.com">
                     <button class="btn btn-primary" onclick="app.loadViewer()">Load</button>
-                    <button class="btn" onclick="app.openInNewTab()">Open in New Tab</button>
+                    <button class="btn" onclick="app.openInNewTab()">Open</button>
                 </div>
                 <div class="viewer-container">
                     <iframe id="website-frame" src="about:blank" sandbox="allow-scripts allow-same-origin allow-forms"></iframe>
                 </div>
-                <div class="viewer-info">
-                    <p>Enter a tunnel URL (e.g., https://your-tunnel.trycloudflare.com) or localhost address (e.g., http://127.0.0.1:8080)</p>
-                </div>
+                <div class="viewer-info"><p>Enter a tunnel URL or http://127.0.0.1:8080</p></div>
             </div>
 
-            <!-- Settings Page -->
+            <!-- Settings -->
             <div class="page" id="page-settings">
                 <h1 class="page-title">Settings</h1>
                 <div class="settings-section">
                     <h3>Appearance</h3>
-                    <div class="setting-item">
-                        <label>Theme</label>
-                        <select id="setting-theme" class="select-input">
-                            <option value="dark">Dark</option>
-                            <option value="light">Light</option>
-                            <option value="system">System</option>
-                        </select>
-                    </div>
-                    <div class="setting-item">
-                        <label>Default Host</label>
-                        <input type="text" id="setting-host" class="text-input" value="127.0.0.1">
-                    </div>
-                    <div class="setting-item">
-                        <label>Default Port</label>
-                        <input type="number" id="setting-port" class="text-input" value="8080">
-                    </div>
+                    <div class="setting-item"><label>Theme</label><select id="setting-theme" class="select-input"><option value="dark">Dark</option><option value="light">Light</option></select></div>
+                    <div class="setting-item"><label>Default Host</label><input type="text" id="setting-host" class="text-input" value="127.0.0.1"></div>
+                    <div class="setting-item"><label>Default Port</label><input type="number" id="setting-port" class="text-input" value="8080"></div>
                 </div>
                 <div class="settings-section">
                     <h3>Tunnels</h3>
-                    <div class="setting-item">
-                        <label>Default Provider</label>
-                        <select id="setting-provider" class="select-input">
-                            <option value="cloudflare">Cloudflare</option>
-                            <option value="ngrok">ngrok</option>
-                            <option value="localtunnel">LocalTunnel</option>
-                        </select>
-                    </div>
-                    <div class="setting-item">
-                        <label>
-                            <input type="checkbox" id="setting-autostart" checked>
-                            Auto-start tunnel
-                        </label>
-                    </div>
+                    <div class="setting-item"><label>Provider</label><select id="setting-provider" class="select-input"><option value="cloudflare">Cloudflare</option><option value="ngrok">ngrok</option><option value="localtunnel">LocalTunnel</option></select></div>
+                    <div class="setting-item"><label><input type="checkbox" id="setting-autostart" checked> Auto-start</label></div>
                 </div>
                 <button class="btn btn-primary" onclick="app.saveSettings()">Save Settings</button>
             </div>

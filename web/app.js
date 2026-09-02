@@ -11,7 +11,7 @@ class NebulaForgeWeb {
     }
 
     bindNavigation() {
-        document.querySelectorAll('.nav-item').forEach(item => {
+        document.querySelectorAll('.nav-item, .mobile-nav-item').forEach(item => {
             item.addEventListener('click', () => {
                 const page = item.dataset.page;
                 this.navigateTo(page);
@@ -20,11 +20,12 @@ class NebulaForgeWeb {
     }
 
     navigateTo(page) {
-        document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+        document.querySelectorAll('.nav-item, .mobile-nav-item').forEach(i => i.classList.remove('active'));
         document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
         
-        document.querySelector(`[data-page="${page}"]`).classList.add('active');
-        document.getElementById(`page-${page}`).classList.add('active');
+        document.querySelectorAll(`[data-page="${page}"]`).forEach(el => el.classList.add('active'));
+        const target = document.getElementById(`page-${page}`);
+        if (target) target.classList.add('active');
         this.currentPage = page;
 
         switch(page) {
